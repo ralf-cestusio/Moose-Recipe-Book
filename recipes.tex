@@ -1,0 +1,20 @@
+\documentclass[a4paper]{recipe}
+\input{packages}
+\let\stdrecipe\recipe 
+\renewcommand{\recipe}{\newpage\stdrecipe}
+\newcommand{\degree}{\ensuremath{^\circ}}
+\begin{document}
+%\layout
+\input{titlepage}
+\chapter{Main Dishes}
+\input{asian/greenchickencurry}
+\input{asian/shanghaichickennoodles}
+\input{asian/shengjianbao}
+\chapter{Side Dishes}
+\input{european/semmelknoedel}
+\chapter{Baking}
+\input{baking/bananabread}
+\input{asian/baodough}
+\input{baking/blueberrystreuselmuffins}
+\tableofcontents
+\end{document}

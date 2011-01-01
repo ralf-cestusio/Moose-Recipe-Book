@@ -1,0 +1,173 @@
+% Anpassung des Seitenlayouts ----------------------------------------------
+% 	siehe Seitenstil.tex
+% --------------------------------------------------------------------------
+\usepackage[english]{babel}
+\usepackage{bookman}
+\usepackage{xfrac}
+\usepackage{layout}
+\usepackage{wrapfig}
+\newcommand{\bsi}[2]{%
+  \fontencoding{T1}\fontfamily{pbs}\fontseries{xl}\fontshape{n}%
+  \fontsize{#1}{#2}\selectfont}
+
+\renewcommand{\inghead}{\textbf{Ingredients}:\ }
+\renewcommand{\rechead}{\centering\bsi{24pt}{30pt}}
+\newcommand{\titel}{Moose Recipe Book}
+\newcommand{\autor}{Ralf Mueller}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcounter{wrapfigures}
+\newcommand{\img}[1]
+{
+\begin{wrapfigure}{o}{0.6\textwidth}
+ \stepcounter{wrapfigures}
+  \vspace{-20pt}  
+  \begin{center}
+    \includegraphics[width=0.58\textwidth]{img/#1}
+  \end{center}
+  \vspace{-20pt}
+\end{wrapfigure}
+}
+\makeatletter
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{0em}}
+\makeatother
+\setlength{\marginparwidth}{0pt}
+\setlength\parindent{0pt}
+\setlength\parskip{2ex plus 0.5ex}
+
+
+
+% Umlaute ------------------------------------------------------------------
+% 		Umlaute/Sonderzeichen wie ���� direkt im Quelltext verwenden (CodePage).
+%		Erlaubt automatische Trennung von Worten mit Umlauten.
+% --------------------------------------------------------------------------
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{ae} % "sch�neres" �
+\usepackage{textcomp} % Euro-Zeichen etc.
+
+% Grafiken -----------------------------------------------------------------
+% 		Einbinden von Grafiken [draft oder final]
+% 		Option [draft] bindet Bilder nicht ein - auch globale Option
+% --------------------------------------------------------------------------
+%\usepackage[dvips,final]{graphicx}
+%\graphicspath{img/} % Dort liegen die Bilder des Dokuments
+
+% Befehle aus AMSTeX f�r mathematische Symbole z.B. \boldsymbol \mathbb ----
+\usepackage{amsmath,amsfonts}
+
+% F�r Index-Ausgabe; \printindex -------------------------------------------
+\usepackage{makeidx}
+
+% Einfache Definition der Zeilenabst�nde und Seitenr�nder etc. -------------
+\usepackage{setspace}
+\usepackage{geometry}
+\geometry{bindingoffset=1cm}
+
+
+% Symbolverzeichnis --------------------------------------------------------
+% 	Symbolverzeichnisse bequem erstellen, beruht auf MakeIndex.
+% 		makeindex.exe %Name%.nlo -s nomencl.ist -o %Name%.nls
+% 	erzeugt dann das Verzeichnis. Dieser Befehl kann z.B. im TeXnicCenter
+%		als Postprozessor eingetragen werden, damit er nicht st�ndig manuell
+%		ausgef�hrt werden muss.
+%		Die Definitionen sind ausgegliedert in die Datei Abkuerzungen.tex.
+% --------------------------------------------------------------------------
+\usepackage[intoc]{nomencl}
+  \let\abbrev\nomenclature
+  \renewcommand{\nomname}{Abk�rzungsverzeichnis}
+  \setlength{\nomlabelwidth}{.25\hsize}
+  \renewcommand{\nomlabel}[1]{#1 \dotfill}
+  \setlength{\nomitemsep}{-\parsep}
+
+
+% Zum Umflie�en von Bildern -------------------------------------------------
+%\usepackage{floatflt}
+
+
+% Zum Einbinden von Programmcode --------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor} 
+\definecolor{hellgelb}{rgb}{1,1,0.9}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+\lstset{%
+    float=hbp,%
+    basicstyle=\texttt\small, %
+    identifierstyle=\color{colIdentifier}, %
+    keywordstyle=\color{colKeys}, %
+    stringstyle=\color{colString}, %
+    commentstyle=\color{colComments}, %
+    columns=flexible, %
+    tabsize=2, %
+    frame=single, %
+    extendedchars=true, %
+    showspaces=false, %
+    showstringspaces=false, %
+    numbers=left, %
+    numberstyle=\tiny, %
+    breaklines=true, %
+    backgroundcolor=\color{hellgelb}, %
+    breakautoindent=true, %
+%    captionpos=b%
+}
+
+% Lange URLs umbrechen etc. -------------------------------------------------
+\usepackage{url}
+
+
+% Wichtig f�r korrekte Zitierweise ------------------------------------------
+\usepackage[square]{natbib}
+% Quellenangaben in eckige Klammern fassen ----------------------------------
+\bibpunct{[}{]}{;}{a}{}{,~}
+
+
+% PDF-Optionen --------------------------------------------------------------
+\usepackage[
+bookmarks,
+bookmarksopen=true,
+pdftitle={\titel},
+pdfauthor={\autor},
+pdfcreator={\autor},
+pdfsubject={\titel},
+pdfkeywords={\titel},
+colorlinks=true,
+%linkcolor=red, % einfache interne Verkn�pfungen
+anchorcolor=black,% Ankertext
+citecolor=blue, % Verweise auf Literaturverzeichniseintr�ge im Text
+filecolor=magenta, % Verkn�pfungen, die lokale Dateien �ffnen
+menucolor=red, % Acrobat-Men�punkte
+urlcolor=cyan, 
+% f�r die Druckversion k�nnen die Farben ausgeschaltet werden:
+linkcolor=black, % einfache interne Verkn�pfungen
+%anchorcolor=black,% Ankertext
+%citecolor=black, % Verweise auf Literaturverzeichniseintr�ge im Text
+%filecolor=black, % Verkn�pfungen, die lokale Dateien �ffnen
+%menucolor=black, % Acrobat-Men�punkte
+%urlcolor=black, 
+backref,
+%pagebackref,
+plainpages=false,% zur korrekten Erstellung der Bookmarks
+pdfpagelabels,% zur korrekten Erstellung der Bookmarks
+hypertexnames=false,% zur korrekten Erstellung der Bookmarks
+%linktocpage % Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
+]{hyperref}
+\usepackage{bookmark}
+% Zum fortlaufenden Durchnummerieren der Fu�noten ---------------------------
+\usepackage{chngcntr}
+
+
+% f�r lange Tabellen
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{lscape}
+
+% Spaltendefinition rechtsb�ndig mit definierter Breite ---------------------
+\newcolumntype{w}[1]{>{\raggedleft\hspace{0pt}}p{#1}}
+
+% Formatierung von Listen �ndern
+\usepackage{paralist}
+% Standardeinstellungen:
+% \setdefaultleftmargin{2.5em}{2.2em}{1.87em}{1.7em}{1em}{1em}
